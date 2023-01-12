@@ -23,19 +23,21 @@ const Quote = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-between">
-        <p>{currentQuote}</p>
-        <Image
-          className="border border-black self-start"
-          src="/assets/refresh.svg"
-          alt="refresh"
-          width="16"
-          height="16"
-          onClick={refreshQuote}
-        />
+    <div className="flex items-stretch md:pt-12 lg:w-full ">
+      <div className="text-sm md:text-base lg:text-xl h-max lg:w-1/2">
+        <div className="flex gap-4">
+          <p>"{currentQuote}"</p>
+          <Image
+            className="border border-black self-start hover:cursor-pointer"
+            src="/assets/desktop/icon-refresh.svg"
+            alt="refresh"
+            width="24"
+            height="24"
+            onClick={refreshQuote}
+          />
+        </div>
+        <p className="font-bold mt-5">{author}</p>
       </div>
-      <p>{author}</p>
     </div>
   );
 };

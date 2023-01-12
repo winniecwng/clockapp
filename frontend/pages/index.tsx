@@ -1,12 +1,11 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "../styles/Home.module.css";
+
 import Quote from "../components/Quote";
 import TimeDisplay from "../components/TimeDisplay";
 
 const inter = Inter({ subsets: ["latin"] });
-
+// const overmind = createOvermind(config);
 // export default function Home({ testData }: any) {
 export default function Home({ timeData }: any) {
   // console.log("testData", testData);
@@ -18,9 +17,15 @@ export default function Home({ timeData }: any) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="p-8">
-        <Quote />
-        <TimeDisplay timeData={timeData} />
+      <div className={`px-8 md:px-16 lg:px-48 ${inter.className} h-screen`}>
+        {/* the paddings will affect how the expand will look */}
+        {/* come back to adjust accordingly */}
+        <div className="h-1/2 pt-8">
+          <Quote />
+        </div>
+        <div className="h-1/2">
+          <TimeDisplay timeData={timeData} />
+        </div>
       </div>
     </>
   );

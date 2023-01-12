@@ -22,13 +22,19 @@ const TimeDisplay = ({ timeData }: any) => {
 
   return (
     <div>
-      <Time timeData={timeData} />
-      <Expand
-        dayOfWeek={dayOfWeek}
-        dayOfYear={dayOfYear}
-        timezone={timezone}
-        weekNumber={weekNumber}
-      />
+      {/* // this style is for when expand is open */}
+      {/* <div className="h-screen"> */}
+      <div className="h-3/5 lg:h-1/2">
+        <Time timeData={timeData} />
+      </div>
+      {/* <div className="h-2/5 lg:h-1/2">
+        <Expand
+          dayOfWeek={dayOfWeek}
+          dayOfYear={dayOfYear}
+          timezone={timezone}
+          weekNumber={weekNumber}
+        />
+      </div> */}
     </div>
   );
 };
