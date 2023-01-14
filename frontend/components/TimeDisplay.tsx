@@ -3,7 +3,7 @@ import Expand from "./Expand";
 import Time from "./Time";
 import { useAppState, useActions } from "../overmind";
 
-const TimeDisplay = ({ timeData }: any) => {
+const TimeDisplay = () => {
   const { isExpand } = useAppState();
 
   const [dayOfWeek, setDayOfWeek] = useState<number>();
@@ -23,11 +23,13 @@ const TimeDisplay = ({ timeData }: any) => {
       });
   }, [dayOfWeek, dayOfYear, timezone, weekNumber]);
 
+  // console.log("isExpand from TimeDisplay", isExpand);
+
   return (
     <div className={isExpand ? "h-screen" : ""}>
       {/* // this style is for when expand is open */}
       <div className="h-3/5 lg:h-1/2">
-        <Time timeData={timeData} />
+        <Time />
       </div>
       {isExpand && (
         <div className="h-2/5 lg:h-1/2">

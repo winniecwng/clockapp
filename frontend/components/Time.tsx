@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useAppState, useActions } from "../overmind";
 
-const Time = ({ timeData }: any) => {
-  const { isExpand } = useAppState();
+const Time = () => {
+  const { isExpand, currentTime } = useAppState();
   const { handleExpandData } = useActions();
 
-  const [currentTime, setCurrentTime] = useState<any>();
+  const [formatTime, setFormatTime] = useState<any>();
   const [country, setCountry] = useState<any>();
   const [city, setCity] = useState<any>();
   const [timezone, setTimezone] = useState<any>();
@@ -14,20 +14,25 @@ const Time = ({ timeData }: any) => {
   const [greetingIcon, setGreetingIcon] = useState<any>();
 
   useEffect(() => {
-    const countryData = timeData.data.location.country.alpha2;
-    const cityData = timeData.data.location.city.name;
-    const timezoneData = timeData.data.timezone.code;
-    const formattedTime = timeData.data.timezone.current_time.slice(11, 16);
+    if (currentTime) {
+      const countryData = currentTime.data.location.country.alpha2;
+      const cityData = currentTime.data.location.city.name;
+      const timezoneData = currentTime.data.timezone.code;
+      const formattedTime = currentTime.data.timezone.current_time.slice(
+        11,
+        16
+      );
 
-    setCountry(countryData);
-    setCity(cityData);
-    setTimezone(timezoneData);
-    setCurrentTime(formattedTime);
-  }, [timeData]);
+      setCountry(countryData);
+      setCity(cityData);
+      setTimezone(timezoneData);
+      setFormatTime(formattedTime);
+    }
+  }, [currentTime]);
 
   useEffect(() => {
-    if (currentTime) {
-      const hour = parseInt(currentTime.slice(0, 2));
+    if (formatTime) {
+      const hour = parseInt(formatTime.slice(0, 2));
       let currentGreeting;
       if (5 < hour && hour < 12) {
         currentGreeting = "Good Morning";
@@ -58,7 +63,7 @@ const Time = ({ timeData }: any) => {
 
       setGreeting(currentGreeting);
     }
-  }, [currentTime]);
+  }, [formatTime]);
 
   const pill = (
     <div className="lg:self-end">
@@ -102,7 +107,7 @@ const Time = ({ timeData }: any) => {
           </p>
         </div>
         <div className="my-6">
-          <span className="text-8xl md:text-9xl font-bold">{currentTime}</span>
+          <span className="text-8xl md:text-9xl font-bold">{formatTime}</span>
           <span className="ml-4 lg:ml-16 lg:text-3xl">{timezone}</span>
         </div>
         <div className="tracking-widest font-bold">
