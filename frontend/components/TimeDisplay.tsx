@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Expand from "./Expand";
 import Time from "./Time";
+import { useAppState, useActions } from "../overmind";
 
 const TimeDisplay = ({ timeData }: any) => {
+  const { isExpand } = useAppState();
+
   const [dayOfWeek, setDayOfWeek] = useState<number>();
   const [dayOfYear, setDayOfYear] = useState<number>();
   const [timezone, setTimezone] = useState<string>();
@@ -21,20 +24,16 @@ const TimeDisplay = ({ timeData }: any) => {
   }, [dayOfWeek, dayOfYear, timezone, weekNumber]);
 
   return (
-    <div>
+    <div className={isExpand ? "h-screen" : ""}>
       {/* // this style is for when expand is open */}
-      {/* <div className="h-screen"> */}
       <div className="h-3/5 lg:h-1/2">
         <Time timeData={timeData} />
       </div>
-      {/* <div className="h-2/5 lg:h-1/2">
-        <Expand
-          dayOfWeek={dayOfWeek}
-          dayOfYear={dayOfYear}
-          timezone={timezone}
-          weekNumber={weekNumber}
-        />
-      </div> */}
+      {isExpand && (
+        <div className="h-2/5 lg:h-1/2">
+          <Expand />
+        </div>
+      )}
     </div>
   );
 };

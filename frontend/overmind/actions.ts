@@ -1,5 +1,29 @@
-import { IAction } from "overmind";
-import { Overmind } from "overmind";
 import { Context } from "../overmind";
 
-export const loadPost = (Context: any) => {};
+export const getWorldTime = async ({ state, effects, actions }: Context) => {
+  try {
+    // state.isLoading = true;
+    const data = await effects.getWorldTime();
+    const { day_of_week, day_of_year, timezone, week_number } = data;
+    state.dayOfWeek = day_of_week;
+    state.dayOfYear = day_of_year;
+    state.timezone = timezone;
+    state.weekNumber = week_number;
+
+    const expandData = [
+      { title: "Current Timezone", info: timezone },
+      { title: "Day of the Year", info: day_of_year },
+      { title: "Day of the Week", info: day_of_week },
+      { title: "Week Number", info: week_number },
+    ];
+    state.timeData = expandData;
+    state.isLoading = false;
+  } catch (error) {
+    console.log("Error", "error");
+  }
+};
+
+export const handleExpandData = ({ state, effects, actions }: Context) => {
+  state.isExpand = !state.isExpand;
+  console.log("expand boolean", state.isExpand);
+};

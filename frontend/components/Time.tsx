@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { useAppState, useActions } from "../overmind";
 
 const Time = ({ timeData }: any) => {
+  const { isExpand } = useAppState();
+  const { handleExpandData } = useActions();
+
   const [currentTime, setCurrentTime] = useState<any>();
   const [country, setCountry] = useState<any>();
   const [city, setCity] = useState<any>();
@@ -60,7 +64,9 @@ const Time = ({ timeData }: any) => {
     <div className="lg:self-end">
       <div className="border border-black h-11 w-28 md:h-16 md:w-36 rounded-full">
         <div className="flex justify-evenly my-3 md:my-5">
-          <p className="text-sm md:text-base">M o r e</p>
+          <p className="text-sm md:text-base">
+            {isExpand ? "L e s s" : "M o r e"}
+          </p>
           <div className="flex -mt-1.5 md:-mt-2.5">
             <div className="self-center md:hidden">
               <Image
@@ -105,7 +111,12 @@ const Time = ({ timeData }: any) => {
           </p>
         </div>
       </div>
-      <div className="py-12 md:py-20 md:py-0 lg:flex">{pill}</div>
+      <div
+        className="py-12 md:py-20 md:py-0 lg:flex"
+        onClick={handleExpandData}
+      >
+        {pill}
+      </div>
     </div>
   );
 };
