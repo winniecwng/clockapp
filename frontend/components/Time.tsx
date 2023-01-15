@@ -96,8 +96,11 @@ const Time = () => {
   );
 
   return (
-    <div className="uppercase pt-20 md:pt-40 lg:pt-20 lg:flex lg:justify-between">
-      {/* need pt-20 md:pt-40 lg:pt-12 when the expand is pulled out */}
+    <div
+      className={`uppercase ${
+        isExpand && "pt-20 md:pt-40 lg:pt-20"
+      } lg:flex lg:justify-between`}
+    >
       <div className="pb-2 lg:text-xl">
         <div className="tracking-widest flex gap-3">
           <div>{greetingIcon}</div>
@@ -117,7 +120,7 @@ const Time = () => {
         </div>
       </div>
       <div
-        className="py-12 md:py-20 md:py-0 lg:flex"
+        className="py-12 md:py-20 md:py-0 lg:flex hover:cursor-pointer"
         onClick={handleExpandData}
       >
         {pill}
