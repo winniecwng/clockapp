@@ -59,7 +59,7 @@ const Time = () => {
   }, [formatTime]);
 
   const pill = (
-    <div className="lg:self-end">
+    <div className={`${isExpand ? "lg:self-center" : "lg:self-end"}`}>
       <div className="border border-black bg-white h-11 w-28 md:h-16 md:w-36 rounded-full">
         <div className="flex justify-evenly my-3 md:my-5">
           <p className="text-sm md:text-base text-black">
@@ -90,8 +90,8 @@ const Time = () => {
 
   return (
     <div
-      className={`uppercase ${
-        isExpand ? "pt-20 md:pt-40 lg:pt-20" : ""
+      className={`uppercase px-8 md:px-16 lg:px-48 ${
+        isExpand ? "pt-20 md:pt-40 lg:pt-20 h-3/5 lg:h-1/2" : ""
       } lg:flex lg:justify-between`}
     >
       <div className="pb-2 lg:text-xl">

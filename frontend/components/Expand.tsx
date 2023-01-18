@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAppState, useActions } from "../overmind";
 
 const Expand = () => {
-  const { isLoading, timeData, formatTime } = useAppState();
+  const { isLoading, timeData, formatTime, isExpand } = useAppState();
   const [background, setBackground] = useState<string>();
 
   useEffect(() => {
@@ -18,8 +18,12 @@ const Expand = () => {
 
   return (
     <div
-      className={`h-full px-8 md:px-16 lg:px-48 py-12 md:py-24 lg:py-20 md:grid md:grid-cols-2 md:gap-8 lg:gap-12 ${
+      className={` ${
         background === "nighttime" ? "bg-black" : "bg-[#979797]"
+      } ${
+        isExpand
+          ? "h-2/5 lg:h-1/2 h-full px-8 md:px-16 lg:px-48 py-12 md:py-24 lg:py-20 md:grid md:grid-cols-2 md:gap-8 lg:gap-12 "
+          : "hidden"
       }`}
     >
       {!isLoading &&

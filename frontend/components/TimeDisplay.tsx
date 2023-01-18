@@ -25,12 +25,8 @@ const TimeDisplay = () => {
 
   return (
     <div className={isExpand ? "h-screen" : ""}>
-      <div className={`px-8 md:px-16 lg:px-48 ${isExpand && "h-3/5 lg:h-1/2"}`}>
-        <Time />
-      </div>
-      <div className={`${isExpand ? "h-2/5 lg:h-1/2" : "hidden"}`}>
-        <Expand />
-      </div>
+      <Time />
+      <Expand />
     </div>
   );
 };
