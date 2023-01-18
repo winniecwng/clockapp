@@ -23,23 +23,14 @@ const TimeDisplay = () => {
       });
   }, [dayOfWeek, dayOfYear, timezone, weekNumber]);
 
-  useEffect(() => {
-    if (isExpand) {
-      setExpanding(isExpand);
-    }
-  }, [isExpand]);
-
   return (
-    <div className={expanding ? "h-screen" : ""}>
-      {/* // this style is for when expand is open */}
-      <div className="px-8 md:px-16 lg:px-48 h-3/5 lg:h-1/2">
+    <div className={isExpand ? "h-screen" : ""}>
+      <div className={`px-8 md:px-16 lg:px-48 ${isExpand && "h-3/5 lg:h-1/2"}`}>
         <Time />
       </div>
-      {expanding && (
-        <div className="h-2/5 lg:h-1/2">
-          <Expand />
-        </div>
-      )}
+      <div className={`${isExpand ? "h-2/5 lg:h-1/2" : "hidden"}`}>
+        <Expand />
+      </div>
     </div>
   );
 };

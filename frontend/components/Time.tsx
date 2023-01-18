@@ -91,7 +91,7 @@ const Time = () => {
   return (
     <div
       className={`uppercase ${
-        isExpand && "pt-20 md:pt-40 lg:pt-20"
+        isExpand ? "pt-20 md:pt-40 lg:pt-20" : ""
       } lg:flex lg:justify-between`}
     >
       <div className="pb-2 lg:text-xl">
