@@ -3,10 +3,9 @@ import Image from "next/image";
 import { useAppState, useActions } from "../overmind";
 
 const Time = () => {
-  const { isExpand, currentTime } = useAppState();
+  const { isExpand, currentTime, formatTime } = useAppState();
   const { handleExpandData } = useActions();
 
-  const [formatTime, setFormatTime] = useState<any>();
   const [country, setCountry] = useState<any>();
   const [city, setCity] = useState<any>();
   const [timezone, setTimezone] = useState<any>();
@@ -18,15 +17,10 @@ const Time = () => {
       const countryData = currentTime.data.location.country.alpha2;
       const cityData = currentTime.data.location.city.name;
       const timezoneData = currentTime.data.timezone.code;
-      const formattedTime = currentTime.data.timezone.current_time.slice(
-        11,
-        16
-      );
 
       setCountry(countryData);
       setCity(cityData);
       setTimezone(timezoneData);
-      setFormatTime(formattedTime);
     }
   }, [currentTime]);
 
@@ -60,16 +54,15 @@ const Time = () => {
         );
 
       setGreetingIcon(timeIcon);
-
       setGreeting(currentGreeting);
     }
   }, [formatTime]);
 
   const pill = (
     <div className="lg:self-end">
-      <div className="border border-black h-11 w-28 md:h-16 md:w-36 rounded-full">
+      <div className="border border-black bg-white h-11 w-28 md:h-16 md:w-36 rounded-full">
         <div className="flex justify-evenly my-3 md:my-5">
-          <p className="text-sm md:text-base">
+          <p className="text-sm md:text-base text-black">
             {isExpand ? "L e s s" : "M o r e"}
           </p>
           <div className="flex -mt-1.5 md:-mt-2.5">
@@ -110,7 +103,9 @@ const Time = () => {
           </p>
         </div>
         <div className="my-6">
-          <span className="text-8xl md:text-9xl font-bold">{formatTime}</span>
+          <span className="text-8xl md:text-9xl font-bold lg:tracking-wider">
+            {formatTime}
+          </span>
           <span className="ml-4 lg:ml-16 lg:text-3xl">{timezone}</span>
         </div>
         <div className="tracking-widest font-bold">

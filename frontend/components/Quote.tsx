@@ -28,7 +28,7 @@ const Quote = () => {
         <div className="flex gap-4">
           <p>"{currentQuote}"</p>
           <Image
-            className="border border-black self-start hover:cursor-pointer"
+            className="self-start mt-2 hover:cursor-pointer"
             src="/assets/desktop/icon-refresh.svg"
             alt="refresh"
             width="24"

@@ -10,7 +10,7 @@ const TimeDisplay = () => {
   const [dayOfYear, setDayOfYear] = useState<number>();
   const [timezone, setTimezone] = useState<string>();
   const [weekNumber, setWeekNumber] = useState<number>();
-
+  const [expanding, setExpanding] = useState<boolean>();
   useEffect(() => {
     fetch("http://worldtimeapi.org/api/ip")
       .then((res) => res.json())
@@ -23,15 +23,19 @@ const TimeDisplay = () => {
       });
   }, [dayOfWeek, dayOfYear, timezone, weekNumber]);
 
-  // console.log("isExpand from TimeDisplay", isExpand);
+  useEffect(() => {
+    if (isExpand) {
+      setExpanding(isExpand);
+    }
+  }, [isExpand]);
 
   return (
-    <div className={isExpand ? "h-screen" : ""}>
+    <div className={expanding ? "h-screen" : ""}>
       {/* // this style is for when expand is open */}
-      <div className="h-3/5 lg:h-1/2">
+      <div className="px-8 md:px-16 lg:px-48 h-3/5 lg:h-1/2">
         <Time />
       </div>
-      {isExpand && (
+      {expanding && (
         <div className="h-2/5 lg:h-1/2">
           <Expand />
         </div>

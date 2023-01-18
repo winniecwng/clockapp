@@ -138,6 +138,7 @@ export type State = {
   isLoading: boolean;
   isExpand: boolean;
   currentTime: any | null;
+  formatTime: any | null;
 };
 
 export const state: State = {
@@ -148,5 +149,6 @@ export const state: State = {
   weekNumber: null,
   timezone: null,
   isExpand: false,
-  currentTime: timeApiData,
+  currentTime: null,
+  formatTime: null,
 };

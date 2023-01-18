@@ -2,7 +2,6 @@ import { Context } from "../overmind";
 
 export const getWorldTime = async ({ state, effects, actions }: Context) => {
   try {
-    // state.isLoading = true;
     const data = await effects.getWorldTime();
     const { day_of_week, day_of_year, timezone, week_number } = data;
     state.dayOfWeek = day_of_week;
@@ -19,11 +18,31 @@ export const getWorldTime = async ({ state, effects, actions }: Context) => {
     state.timeData = expandData;
     state.isLoading = false;
   } catch (error) {
-    console.log("Error", "error");
+    console.log("Error:", error);
   }
 };
 
 export const handleExpandData = ({ state, effects, actions }: Context) => {
   state.isExpand = !state.isExpand;
-  console.log("expand boolean", state.isExpand);
+};
+
+// export function setCurrentTime({ data }: { data: any }) {
+//   return data;
+// }
+
+export const setCurrentTime = (
+  { state, actions, effects }: Context,
+  currentData: any
+) => {
+  state.currentTime = currentData;
+  actions.formatTime();
+};
+
+export const formatTime = ({ state, actions, effects }: Context) => {
+  const formattedTime = state.currentTime.data.timezone.current_time.slice(
+    11,
+    16
+  );
+
+  state.formatTime = formattedTime;
 };
