@@ -89,13 +89,7 @@ const Time = ({ currentTime, formatTime }: any) => {
   );
 
   return (
-    <div
-      className={`uppercase px-8 md:px-16 lg:px-48 ${
-        isExpand
-          ? "transition -translate-y-1/5 duration-700 pt-20 md:pt-40 lg:pt-20 h-3/5 lg:h-1/2"
-          : "transition translate-y-0 duration-700"
-      } lg:flex lg:justify-between`}
-    >
+    <div className={`uppercase lg:flex lg:justify-between`}>
       <div className="pb-2 lg:text-xl">
         <div className="tracking-widest flex gap-3">
           <div>{greetingIcon}</div>

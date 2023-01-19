@@ -26,13 +26,7 @@ const Quote = () => {
   };
 
   return (
-    <div
-      className={`flex items-stretch md:pt-12 lg:w-full ${
-        isExpand
-          ? "transition -translate-y-full duration-700 hidden"
-          : "transition translate-y-0 duration-700"
-      }`}
-    >
+    <div className={`flex items-stretch md:pt-12 lg:w-full`}>
       <div className="text-sm md:text-base lg:text-xl h-max lg:w-1/2">
         <div className="flex gap-4">
           <p>&quot;{currentQuote}&quot;</p>

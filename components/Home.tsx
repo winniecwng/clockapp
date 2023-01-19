@@ -56,7 +56,7 @@ const Home = ({ currentTime }: any) => {
           className={`px-8 md:px-16 lg:px-48 h-1/2 pt-8 ${
             closeQuote
               ? "transition translate-y-0 duration-700"
-              : "transition -translate-y-1/2 duration-700"
+              : "transition -translate-y-full duration-700"
           }`}
         >
           <Quote />

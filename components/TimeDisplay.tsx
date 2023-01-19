@@ -24,10 +24,20 @@ const TimeDisplay = ({ currentTime, formatTime }: any) => {
   }, [dayOfWeek, dayOfYear, timezone, weekNumber]);
 
   return (
-    <div className={isExpand ? "h-screen" : ""}>
-      <Time currentTime={currentTime} formatTime={formatTime} />
-
-      <Expand />
+    // <div className={isExpand ? "h-screen" : ""}>
+    <div>
+      <div
+        className={`px-8 md:px-16 lg:px-48 pt-20 md:pt-40 lg:pt-20 h-3/5 lg:h-1/2 ${
+          isExpand
+            ? "transition -translate-y-1/5 duration-700 ease-in-out"
+            : "transition translate-y-0 duration-700 ease-in-out"
+        } `}
+      >
+        <Time currentTime={currentTime} formatTime={formatTime} />
+      </div>
+      <div>
+        <Expand />
+      </div>
     </div>
   );
 };

@@ -23,7 +23,7 @@ const Expand = () => {
       } ${
         isExpand
           ? "transition translate-y-0 duration-700 h-2/5 lg:h-1/2"
-          : "transition translate-y-full duration-700 overflow:hidden"
+          : "transition translate-y-full duration-700 hidden"
       }`}
     >
       {!isLoading &&
