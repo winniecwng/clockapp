@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { useAppState } from "../overmind";
 
 const Quote = () => {
+  const { isExpand } = useAppState();
   const [currentQuote, setCurrentQuote] = useState<string>();
   const [author, setAuthor] = useState<string>();
   useEffect(() => {
@@ -23,7 +25,13 @@ const Quote = () => {
   };
 
   return (
-    <div className="flex items-stretch md:pt-12 lg:w-full ">
+    <div
+      className={`flex items-stretch md:pt-12 lg:w-full ${
+        isExpand
+          ? "transition -translate-y-full duration-700"
+          : "transition translate-y-0 duration-700"
+      }`}
+    >
       <div className="text-sm md:text-base lg:text-xl h-max lg:w-1/2">
         <div className="flex gap-4">
           <p>"{currentQuote}"</p>

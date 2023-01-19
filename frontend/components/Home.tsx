@@ -42,11 +42,20 @@ const Home = () => {
       <div className={`${inter.className} ${!isExpand ? "h-screen" : " "}`}>
         {/* the paddings will affect how the expand will look when we add background */}
         {/* come back to adjust accordingl */}
-        {closeQuote && (
+        {/* {closeQuote && (
           <div className="px-8 md:px-16 lg:px-48 h-1/2 pt-8">
             <Quote />
           </div>
-        )}
+        )} */}
+        <div
+          className={`px-8 md:px-16 lg:px-48 h-1/2 pt-8 ${
+            closeQuote
+              ? "transition translate-y-0 duration-700"
+              : "transition -translate-y-1/2 duration-700"
+          }`}
+        >
+          <Quote />
+        </div>
         <div className={`${!isExpand && "h-1/2"}`}>
           <TimeDisplay />
         </div>
