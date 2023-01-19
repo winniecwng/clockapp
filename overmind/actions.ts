@@ -26,23 +26,19 @@ export const handleExpandData = ({ state, effects, actions }: Context) => {
   state.isExpand = !state.isExpand;
 };
 
-// export function setCurrentTime({ data }: { data: any }) {
-//   return data;
-// }
+// export const setCurrentTime = (
+//   { state, actions, effects }: Context,
+//   { currentData }: any
+// ) => {
+//   state.currentTime = currentData;
+//   actions.formatTime();
+// };
 
-export const setCurrentTime = (
-  { state, actions, effects }: Context,
-  currentData: any
-) => {
-  state.currentTime = currentData;
-  actions.formatTime();
-};
+// export const formatTime = ({ state, actions, effects }: Context) => {
+//   const formattedTime = state.currentTime.data.timezone.current_time.slice(
+//     11,
+//     16
+//   );
 
-export const formatTime = ({ state, actions, effects }: Context) => {
-  const formattedTime = state.currentTime.data.timezone.current_time.slice(
-    11,
-    16
-  );
-
-  state.formatTime = formattedTime;
-};
+//   state.formatTime = formattedTime;
+// };

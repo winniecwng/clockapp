@@ -3,7 +3,7 @@ import Expand from "./Expand";
 import Time from "./Time";
 import { useAppState, useActions } from "../overmind";
 
-const TimeDisplay = () => {
+const TimeDisplay = ({ currentTime, formatTime }: any) => {
   const { isExpand } = useAppState();
 
   const [dayOfWeek, setDayOfWeek] = useState<number>();
@@ -25,7 +25,7 @@ const TimeDisplay = () => {
 
   return (
     <div className={isExpand ? "h-screen" : ""}>
-      <Time />
+      <Time currentTime={currentTime} formatTime={formatTime} />
       <Expand />
     </div>
   );

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useAppState, useActions } from "../overmind";
 
-const Time = () => {
-  const { isExpand, currentTime, formatTime } = useAppState();
+const Time = ({ currentTime, formatTime }: any) => {
+  const { isExpand } = useAppState();
   const { handleExpandData } = useActions();
 
   const [country, setCountry] = useState<any>();

@@ -6,9 +6,10 @@ const Quote = () => {
   const { isExpand } = useAppState();
   const [currentQuote, setCurrentQuote] = useState<string>();
   const [author, setAuthor] = useState<string>();
+
   useEffect(() => {
     refreshQuote();
-  });
+  }, []);
 
   const fetchQuote = async () => {
     const response = await fetch("https://api.quotable.io/random");

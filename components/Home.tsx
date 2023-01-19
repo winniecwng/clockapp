@@ -5,14 +5,26 @@ import { useAppState } from "../overmind";
 import { Inter } from "@next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
-const Home = () => {
-  const { isExpand, formatTime } = useAppState();
+const Home = ({ currentTime }: any) => {
+  const { isExpand } = useAppState();
   const [closeQuote, setCloseQuote] = useState<boolean>(isExpand);
   const [backgroundTime, setBackgroundTime] = useState<any>();
+  const [formatTime, setFormatTime] = useState<any>();
 
   useEffect(() => {
     setCloseQuote(!closeQuote);
   }, [isExpand]);
+
+  useEffect(() => {
+    if (currentTime) {
+      const formattedTime = currentTime.data.timezone.current_time.slice(
+        11,
+        16
+      );
+
+      setFormatTime(formattedTime);
+    }
+  }, [currentTime]);
 
   useEffect(() => {
     let time;
@@ -40,13 +52,6 @@ const Home = () => {
       style={{ backgroundImage: `url(${backgroundTime?.desktop})` }}
     >
       <div className={`${inter.className} ${!isExpand ? "h-screen" : " "}`}>
-        {/* the paddings will affect how the expand will look when we add background */}
-        {/* come back to adjust accordingl */}
-        {/* {closeQuote && (
-          <div className="px-8 md:px-16 lg:px-48 h-1/2 pt-8">
-            <Quote />
-          </div>
-        )} */}
         <div
           className={`px-8 md:px-16 lg:px-48 h-1/2 pt-8 ${
             closeQuote
@@ -57,7 +62,7 @@ const Home = () => {
           <Quote />
         </div>
         <div className={`${!isExpand && "h-1/2"}`}>
-          <TimeDisplay />
+          <TimeDisplay currentTime={currentTime} formatTime={formatTime} />
         </div>
       </div>
     </div>

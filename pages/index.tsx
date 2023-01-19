@@ -4,22 +4,19 @@ import { useAppState, useActions } from "../overmind";
 import App from "../components/Home";
 
 export default function Home({ timeData }: any) {
-  const { getWorldTime, setCurrentTime } = useActions();
-  const { currentTime } = useAppState();
-  const [currentTimeData, setCurrentTimeData] = useState<any>();
+  const { getWorldTime } = useActions();
+  // const { currentTime } = useAppState();
+  // const [currentTimeData, setCurrentTimeData] = useState<any>();
 
   useEffect(() => {
     getWorldTime();
-    if (timeData) {
-      setCurrentTime(timeData);
-    }
-  });
+  }, []);
 
-  useEffect(() => {
-    if (currentTime) {
-      setCurrentTimeData(currentTime);
-    }
-  }, [currentTime]);
+  // useEffect(() => {
+  //   if (currentTime) {
+  //     setCurrentTimeData(currentTime);
+  //   }
+  // }, [currentTime]);
 
   return (
     <>
@@ -30,7 +27,7 @@ export default function Home({ timeData }: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <App />
+        <App currentTime={timeData} />
       </div>
     </>
   );
