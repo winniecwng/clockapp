@@ -101,7 +101,7 @@ const Time = () => {
           <div>{greetingIcon}</div>
           <p className="self-center">
             {greeting}{" "}
-            <span className="hidden md:inline">, it's currently </span>
+            <span className="hidden md:inline">, it&apos;s currently </span>
           </p>
         </div>
         <div className="my-6">

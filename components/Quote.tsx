@@ -34,7 +34,7 @@ const Quote = () => {
     >
       <div className="text-sm md:text-base lg:text-xl h-max lg:w-1/2">
         <div className="flex gap-4">
-          <p>"{currentQuote}"</p>
+          <p>&quot;{currentQuote}&quot;</p>
           <Image
             className="self-start mt-2 hover:cursor-pointer"
             src="/assets/desktop/icon-refresh.svg"
