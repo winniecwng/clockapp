@@ -26,6 +26,7 @@ const TimeDisplay = ({ currentTime, formatTime }: any) => {
   return (
     <div className={isExpand ? "h-screen" : ""}>
       <Time currentTime={currentTime} formatTime={formatTime} />
+
       <Expand />
     </div>
   );

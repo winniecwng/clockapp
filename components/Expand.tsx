@@ -18,12 +18,12 @@ const Expand = () => {
 
   return (
     <div
-      className={` h-2/5 lg:h-1/2 h-full px-8 md:px-16 lg:px-48 py-12 md:py-24 lg:py-20 md:grid md:grid-cols-2 md:gap-8 lg:gap-12 ${
+      className={`px-8 md:px-16 lg:px-48 py-12 md:py-24 lg:py-20 md:grid md:grid-cols-2 md:gap-8 lg:gap-12 ${
         background === "nighttime" ? "bg-black" : "bg-[#979797]"
       } ${
         isExpand
-          ? "transition translate-y-0 duration-700"
-          : "transition translate-y-full duration-700"
+          ? "transition translate-y-0 duration-700 h-2/5 lg:h-1/2"
+          : "transition translate-y-full duration-700 overflow:hidden"
       }`}
     >
       {!isLoading &&

@@ -29,7 +29,7 @@ const Quote = () => {
     <div
       className={`flex items-stretch md:pt-12 lg:w-full ${
         isExpand
-          ? "transition -translate-y-full duration-700"
+          ? "transition -translate-y-full duration-700 hidden"
           : "transition translate-y-0 duration-700"
       }`}
     >
