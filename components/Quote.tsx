@@ -8,7 +8,7 @@ const Quote = () => {
   const [author, setAuthor] = useState<string>();
   useEffect(() => {
     refreshQuote();
-  }, []);
+  });
 
   const fetchQuote = async () => {
     const response = await fetch("https://api.quotable.io/random");

@@ -13,7 +13,7 @@ export default function Home({ timeData }: any) {
     if (timeData) {
       setCurrentTime(timeData);
     }
-  }, []);
+  });
 
   useEffect(() => {
     if (currentTime) {
