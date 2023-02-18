@@ -1,6 +1,6 @@
 ```...javascript
 
-  const currentGreetingTime = (hour: any) => {
+  const currentGreetingTime = (hour: number) => {
     if (5 < hour && hour < 12) {
       return "Good Morning";
     } else if (12 <= hour && hour < 18) {
